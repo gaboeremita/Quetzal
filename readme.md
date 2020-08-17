@@ -19,7 +19,20 @@ $ composer require gaboeremita/quetzal
 
 ## Usage
 
-Instantiate the class with your desired Mailinglist service (Currently ConstantContact is the only one supported)
+### Constant Contact (Currently only one supported)
+
+Make sure you create an account not just in the [Constant Contact website](https://www.constantcontact.com/) but also
+to create a developer account on [constantcontact.mashery.com](https://constantcontact.mashery.com/)
+
+Once you have your accounts setup you need to add the following fields to your .env file:
+
+``` dotenv
+CONSTANT_CONTACT_API_URL=https://api.constantcontact.com/v2/
+CONSTANT_CONTACT_API_KEY=your_api_key
+CONSTANT_CONTACT_TOKEN=your_token
+```
+
+Instantiate the class with your desired Mailinglist service.
 
 ``` php
 $constantContact = new ConstantContact();
