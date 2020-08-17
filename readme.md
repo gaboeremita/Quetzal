@@ -1,11 +1,13 @@
-# quetzal
+# Quetzal
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+Quetzal is an ConstantContact integration package for Laravel. 
+My plan is to expand to other mailing services such as Mailchimp and include a much more robust API. 
+
+Take a look at [contributing.md](contributing.md) to see a to do list.
 
 ## Installation
 
@@ -17,15 +19,38 @@ $ composer require gaboeremita/quetzal
 
 ## Usage
 
+Instantiate the class with your desired Mailinglist service (Currently ConstantContact is the only one supported)
+
+``` php
+$constantContact = new ConstantContact();
+```
+
+Then you can create a new list like this:
+
+``` php
+$newList = Quetzal::createList($constantContact, 'Example list');
+
+```
+
+You can also add contacts to a list:
+
+``` php
+Quetzal::addContactToList($constantContact, $newList->id, 'test@test.com', 'Test', 'McTestyFace');
+
+```
+
+And finally you can get all the contacts from a list:
+
+``` php
+$contacts = Quetzal::getContactsFromList($constantContact, $newList->id);
+
+```
+
+Expect more functionality soon!
+
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
-```
 
 ## Contributing
 
@@ -37,12 +62,11 @@ If you discover any security related issues, please email author email instead o
 
 ## Credits
 
-- [author name][link-author]
-- [All Contributors][link-contributors]
+- Me
 
 ## License
 
-license. Please see the [license file](license.md) for more information.
+MIT. Please see the [license file](license.md) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/gaboeremita/quetzal.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/gaboeremita/quetzal.svg?style=flat-square
